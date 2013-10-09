@@ -5,4 +5,5 @@ After git pull origin master, in Eclipse, click File->Import->General->Existing 
 Android Virtual Device
 ====
 The AVD I used is Nexux One with Target Android 4.3 - API Level 18, CPU ARM(armeabi-v7a)
-![alt text](https://github.com/BeatTheBuzzer/CS3281/tree/master/cs3281simple/AVD.jpg)
+
+![](https://github.com/BeatTheBuzzer/CS3281/blob/master/cs3281simple/AVD.JPG?raw=true)
