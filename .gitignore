@@ -1,1 +1,2 @@
-.metadata/
+# first line must not contain any rules
+.bin/
