@@ -1,3 +1,4 @@
 # first line must not contain any rules
 .cs3281code/bin/
 .metadata/
+cs3281code/bin/dexedLibs/android-support-v4-478dbf5d6af8d3f587515837c4c1ac96.jar*.class
