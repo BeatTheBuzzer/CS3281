@@ -1,5 +1,11 @@
 # first line must not contain any rules
 .cs3281code/bin/
+
+#metadat
 .metadata/
+
+#class file
 *.class
+
+#jar file
 *.jar

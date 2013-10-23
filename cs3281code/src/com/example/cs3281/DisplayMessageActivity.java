@@ -1,5 +1,20 @@
 package com.example.cs3281;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.protocol.HTTP;
+
 import com.example.cs3281.R;
 import android.os.Bundle;
 import android.app.Activity;
@@ -25,9 +40,30 @@ public class DisplayMessageActivity extends Activity {
 	    // Create the text view
 	    TextView textView = new TextView(this);
 	    textView.setTextSize(100);
-	    textView.setText(message);
-
+	    String line = "";
+	    HttpClient client = new DefaultHttpClient();
+	    HttpPost post = new HttpPost("http://10.0.0.3/httppost.php");
+	    try {
+	      List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
+	      nameValuePairs.add(new BasicNameValuePair("input",
+	          message));
+	      
+	      post.setEntity(new UrlEncodedFormEntity(nameValuePairs,HTTP.UTF_8));
+	 
+	      HttpResponse response = client.execute(post);
+	      System.out.println("Finish");
+	      BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
+	      
+	      while ((line = rd.readLine()) != null) {
+	    	  textView.setText(line);
+	        System.out.println(line);
+	      }
+	    } catch (IOException e) {
+		      e.printStackTrace();
+		}
 	    // Set the text view as the activity layout
+	    
+	    
 	    setContentView(textView);
 	}
 
